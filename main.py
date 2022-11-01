@@ -34,7 +34,6 @@ async def connect(sid, environ, *args):
             return user['error']
             await socket_manager.disconnect(sid)
             
-        print(user)
         socket_manager.enter_room(user['id'], user['room'])
         await socket_manager.emit('message', 
         {'user': 'admin', 'text': f"{user['name']}, Welcome to the {user['room']} room. Have Fun."}, 
